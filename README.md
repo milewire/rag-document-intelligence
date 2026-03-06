@@ -107,6 +107,6 @@ curl -X POST "http://localhost:8000/query" \
 
 - **FastAPI** — API framework
 - **sentence-transformers** — Local embedding model (`all-MiniLM-L6-v2`)
-- **MongoDB Atlas** — Vector store
+- **MongoDB Atlas** — Vector store (cosine similarity via NumPy; compatible with free tier)
 - **Anthropic Claude Sonnet 4.5** — Answer generation (`claude-sonnet-4-5`)
 - **PyMuPDF / python-docx / openpyxl / python-pptx** — Document parsing
