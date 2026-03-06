@@ -14,7 +14,7 @@ A Retrieval-Augmented Generation (RAG) API that lets you upload documents and qu
 
 ## Project Structure
 
-```
+```text
 rag-document-intelligence/
 ├── src/
 │   ├── ingest.py         # Text extraction and chunking
