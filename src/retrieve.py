@@ -32,7 +32,7 @@ def query_documents(query, top_k=5):
         return {"query": query, "response": "No documents found.", "sources": []}
     context = "\n\n".join([f"Source: {c['file_name']} (chunk {c['chunk_index']})\n{c['content']}" for c in chunks])
     message = anthropic_client.messages.create(
-        model="claude-3-5-haiku-20241022",
+        model="claude-sonnet-4-5",
         max_tokens=1024,
         messages=[{"role": "user", "content": f"Answer this question using the documents below.\n\nDOCUMENTS:\n{context}\n\nQUESTION: {query}"}]
     )

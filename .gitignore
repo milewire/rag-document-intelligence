@@ -15,6 +15,12 @@ build/
 # Uploads (user files, not tracked)
 uploads/
 
+# Documents (local copies, not tracked)
+documents/
+
+# Snapshots
+.snapshots/
+
 # IDE
 .vscode/
 .idea/
