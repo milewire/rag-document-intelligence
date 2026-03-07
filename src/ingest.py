@@ -43,14 +43,17 @@ def extract_excel(file_path: str) -> str:
     return text.strip()
 
 def extract_pptx(file_path: str) -> str:
-    prs = Presentation(file_path)
-    text = ""
-    for i, slide in enumerate(prs.slides):
-        text += f"\nSlide {i+1}:\n"
-        for shape in slide.shapes:
-            if hasattr(shape, "text"):
-                text += shape.text + "\n"
-    return text.strip()
+    try:
+        prs = Presentation(file_path)
+        text = ""
+        for i, slide in enumerate(prs.slides):
+            text += f"\nSlide {i+1}:\n"
+            for shape in slide.shapes:
+                if hasattr(shape, "text"):
+                    text += shape.text + "\n"
+        return text.strip()
+    except Exception as e:
+        raise ValueError(f"Failed to extract text from PPTX: {e}") from e
 
 def chunk_text(text: str, chunk_size: int = 500, overlap: int = 50) -> list:
     """Split text into overlapping chunks for better retrieval."""

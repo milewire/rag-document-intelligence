@@ -54,5 +54,15 @@ def embed_and_store(file_path: str, file_name: str) -> dict:
     }
 
 def list_documents() -> list:
-    """List all unique documents stored in MongoDB."""
-    return collection.distinct("file_name")
+    """List all documents with chunk counts: [{ filename, chunk_count }, ...]."""
+    pipeline = [
+        {"$group": {"_id": "$file_name", "chunk_count": {"$sum": 1}}},
+        {"$sort": {"_id": 1}}
+    ]
+    cursor = collection.aggregate(pipeline)
+    return [{"filename": doc["_id"], "chunk_count": doc["chunk_count"]} for doc in cursor]
+
+def delete_document(file_name: str) -> int:
+    """Remove all chunks for the given file. Returns number of chunks deleted."""
+    result = collection.delete_many({"file_name": file_name})
+    return result.deleted_count
