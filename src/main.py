@@ -1,17 +1,23 @@
 import os
 import shutil
 import traceback
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env first so OPENSSL_CONF is set before any SSL connections are made
+load_dotenv()
+if "OPENSSL_CONF" in os.environ:
+    _conf = Path(os.environ["OPENSSL_CONF"])
+    if not _conf.is_absolute():
+        os.environ["OPENSSL_CONF"] = str(Path(__file__).parent.parent / _conf)
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
-from dotenv import load_dotenv
-
 from src.embed import embed_and_store, list_documents
 from src.retrieve import query_documents
-
-load_dotenv()
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -29,15 +35,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="src/static", html=True), name="static")
+STATIC_DIR = Path(__file__).parent / "static"
 
 class QueryRequest(BaseModel):
     query: str
     top_k: int = 5
 
-@app.get("/")
+@app.get("/", response_class=FileResponse)
 def root():
+    return str(STATIC_DIR / "index.html")
+
+@app.get("/health")
+def health():
     return {"message": "RAG Document Intelligence API", "status": "running"}
+
+# Mount static assets (CSS/JS/images if any) — after all routes
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 @app.post("/upload")
 async def upload_document(file: UploadFile = File(...)):

@@ -3,12 +3,13 @@ from pymongo import MongoClient
 import anthropic
 import numpy as np
 import os
+import certifi
 from dotenv import load_dotenv
 
 load_dotenv()
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
-client = MongoClient(os.getenv("MONGODB_URI"))
+client = MongoClient(os.getenv("MONGODB_URI"), tlsCAFile=certifi.where())
 db = client[os.getenv("DB_NAME")]
 collection = db[os.getenv("COLLECTION_NAME")]
 anthropic_client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
