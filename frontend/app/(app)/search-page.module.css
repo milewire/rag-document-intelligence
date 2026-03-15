@@ -1,0 +1,46 @@
+/* Type-based icon colors for result rows and context viewer (hex/rgba for Chrome < 111) */
+.resultIconBgIncident {
+  background: rgba(217, 119, 6, 0.15);
+}
+.resultIconBgDocument {
+  background: rgba(37, 99, 235, 0.15);
+}
+.resultIconBgRunbook {
+  background: rgba(202, 138, 4, 0.15);
+}
+.resultIconFgIncident {
+  color: #d97706;
+}
+.resultIconFgDocument {
+  color: #2563eb;
+}
+.resultIconFgRunbook {
+  color: #ca8a04;
+}
+.contextIconBgIncident {
+  background: rgba(217, 119, 6, 0.15);
+}
+.contextIconBgDocument {
+  background: rgba(37, 99, 235, 0.15);
+}
+.contextIconBgRunbook {
+  background: rgba(202, 138, 4, 0.15);
+}
+.contextIconFgIncident {
+  color: #d97706;
+}
+.contextIconFgDocument {
+  color: #2563eb;
+}
+.contextIconFgRunbook {
+  color: #ca8a04;
+}
+.contextLabelIncident {
+  color: #d97706;
+}
+.contextLabelDocument {
+  color: #2563eb;
+}
+.contextLabelRunbook {
+  color: #ca8a04;
+}

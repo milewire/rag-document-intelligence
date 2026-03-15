@@ -1,0 +1,38 @@
+/* Runbook card icon - hex/rgba for Chrome < 111 compatibility */
+.serviceIconBg {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+.serviceIconBg_payments-api { background: rgba(217, 119, 6, 0.15); }
+.serviceIconBg_auth-service { background: rgba(234, 179, 8, 0.15); }
+.serviceIconBg_search-service { background: rgba(37, 99, 235, 0.15); }
+.serviceIconBg_data-pipeline { background: rgba(124, 58, 237, 0.15); }
+.serviceIconBg_notifications { background: rgba(202, 138, 4, 0.15); }
+.serviceIconBg_image-cdn { background: rgba(192, 38, 211, 0.15); }
+.serviceIconBg_user-service { background: rgba(14, 165, 233, 0.15); }
+.serviceIconBg_default { background: rgba(29, 78, 216, 0.15); }
+
+.serviceIconFg_payments-api { color: #d97706; }
+.serviceIconFg_auth-service { color: #eab308; }
+.serviceIconFg_search-service { color: #2563eb; }
+.serviceIconFg_data-pipeline { color: #7c3aed; }
+.serviceIconFg_notifications { color: #ca8a04; }
+.serviceIconFg_image-cdn { color: #c026d3; }
+.serviceIconFg_user-service { color: #0ea5e9; }
+.serviceIconFg_default { color: #1d4ed8; }
+
+/* Section header (service name) */
+.serviceLabel_payments-api { color: #d97706; }
+.serviceLabel_auth-service { color: #eab308; }
+.serviceLabel_search-service { color: #2563eb; }
+.serviceLabel_data-pipeline { color: #7c3aed; }
+.serviceLabel_notifications { color: #ca8a04; }
+.serviceLabel_image-cdn { color: #c026d3; }
+.serviceLabel_user-service { color: #0ea5e9; }
+.serviceLabel_default { color: #1d4ed8; }

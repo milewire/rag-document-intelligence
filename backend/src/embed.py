@@ -1,20 +1,10 @@
 from sentence_transformers import SentenceTransformer
-from pymongo import MongoClient
 from datetime import datetime, timezone
-import os
-import certifi
-from dotenv import load_dotenv
+from src.db import collection
 from src.ingest import extract_text, chunk_text
-
-load_dotenv()
 
 # Initialize embedding model
 model = SentenceTransformer('all-MiniLM-L6-v2')
-
-# Connect to MongoDB
-client = MongoClient(os.getenv("MONGODB_URI"), tlsCAFile=certifi.where())
-db = client[os.getenv("DB_NAME")]
-collection = db[os.getenv("COLLECTION_NAME")]
 
 def embed_and_store(file_path: str, file_name: str) -> dict:
     """Extract, chunk, embed, and store a document in MongoDB Atlas."""

@@ -1,0 +1,13 @@
+# Minimal OpenSSL config for Windows when connecting to MongoDB Atlas.
+# Use in .env: OPENSSL_CONF=openssl.cnf
+# Resolves TLSV1_ALERT_INTERNAL_ERROR / SSL handshake failures on some Windows + Python setups.
+openssl_conf = default_conf
+
+[default_conf]
+ssl_conf = ssl_sect
+
+[ssl_sect]
+system_default = ssl_default_sect
+
+[ssl_default_sect]
+Options = UnsafeLegacyRenegotiation

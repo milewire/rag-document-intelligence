@@ -1,22 +1,51 @@
 # Environment
 .env
+.env.local
+.env.*.local
+*.local
+backend/.env
 
 # Python
 venv/
+.venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 *.pyo
 *.pyd
+*.egg
 *.egg-info/
+.eggs/
 dist/
 build/
-.eggs/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+*.manifest
 
 # Uploads (user files, not tracked)
 uploads/
+backend/uploads/
 
 # Documents (local copies, not tracked)
 documents/
+
+# Node / Frontend
+node_modules/
+.next/
+out/
+.vercel/
+.turbo/
+pnpm-debug.log*
+.npm
+.yarn/
+.pnp.*
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.vercel/
+frontend/.turbo/
 
 # Snapshots
 .snapshots/
@@ -26,6 +55,7 @@ documents/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
@@ -33,6 +63,16 @@ Thumbs.db
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Local / editor
 .cursor/
+
+# Azure / azd
+.azure/
+
+# Test / coverage
+coverage.xml
+*.cover
