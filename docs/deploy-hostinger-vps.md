@@ -233,10 +233,10 @@ Because nginx rewrites `https://app.yourdomain.com/api` → `http://127.0.0.1:80
 
 ## Summary
 
-| Component   | URL / Port        |
-| ---------- | ----------------- |
-| Frontend   | https://app.yourdomain.com (nginx → :3000) |
-| Backend    | https://app.yourdomain.com/api (nginx → :8000) |
+| Component | URL / Port |
+| --------- | ---------- |
+| Frontend | <https://app.yourdomain.com> (nginx → :3000) |
+| Backend | <https://app.yourdomain.com/api> (nginx → :8000) |
 | NEXT_PUBLIC_API_URL | `https://app.yourdomain.com/api` |
 
 After pulling updates:
