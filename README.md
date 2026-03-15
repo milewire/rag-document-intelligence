@@ -162,12 +162,10 @@ Use URL-encoding for filenames with spaces or special characters (e.g. `My%20fil
 3. **Retrieve** — `retrieve.py` embeds the user’s query, computes cosine similarity against stored chunks, and passes the top-k results to Claude as context.
 4. **Generate** — Claude Sonnet 4.5 synthesises a grounded answer from the retrieved document chunks.
 
-## Deployment (e.g. VPS)
+## Deployment
 
-1. Push code to GitHub and pull on the server.
-2. **Backend:** Create `backend/.env`, install dependencies in `backend/`, run from `backend/`: `uvicorn src.main:app --host 0.0.0.0 --port 8000` (or use a process manager).
-3. **Frontend:** In `frontend/`, set the API base URL (e.g. in `lib/api.ts` or via env) to your backend URL, then build and serve (e.g. `npm run build` and a static/server host).
-4. In MongoDB Atlas **Network Access**, add the server’s public IP.
+- **Hostinger VPS (both backend + frontend):** See [docs/deploy-hostinger-vps.md](docs/deploy-hostinger-vps.md) for nginx, systemd, and HTTPS.
+- **Generic VPS:** Push code and pull on the server. Create `backend/.env`, run backend with `uvicorn src.main:app --host 0.0.0.0 --port 8000` (or a process manager). For the frontend, set `NEXT_PUBLIC_API_URL` to your backend URL (e.g. `https://yourdomain.com/api`), then `npm run build` and `npm run start`. Add the server’s public IP in MongoDB Atlas **Network Access**.
 
 ## Tech Stack
 
